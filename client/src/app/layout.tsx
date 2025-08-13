@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Header from "./components/Header";
+import { SessionProviderWrapper } from "./providers/SessionProviderWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,19 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="p-4 border-b shadow-sm flex gap-6">
-          <h1 className="text-xl font-bold flex-shrink-0">Movie Ranker</h1>
-          <nav className="flex gap-4 items-center">
-            <Link href="/auth" className="text-blue-600 hover:underline">
-              Sign In
-            </Link>
-            <Link href="/search" className="text-blue-600 hover:underline">
-              Search
-            </Link>
-          </nav>
-        </header>
+        <SessionProviderWrapper>
+          <Header />
 
-        <main>{children}</main>
+          <main>{children}</main>
+        </SessionProviderWrapper>
       </body>
     </html>
   );

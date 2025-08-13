@@ -1,3 +1,4 @@
+import { SupabaseAdapter } from "@auth/supabase-adapter";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -8,10 +9,10 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET as string,
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET, // used to encrypt session tokens
-  // pages: {
-  //   signIn: "/", // custom sign-in page
-  // }
+  adapter: SupabaseAdapter({
+    url: process.env.SUPABASE_URL as string,
+    secret: process.env.SUPABASE_SERVICE_ROLE_KEY as string,
+  }),
 };
 
 const handler = NextAuth(authOptions);
