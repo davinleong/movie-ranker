@@ -13,6 +13,13 @@ export const authOptions = {
     url: process.env.SUPABASE_URL as string,
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY as string,
   }),
+  callbacks: {
+    async session({ session, user }: { session: any; user: any }) {
+      // Attach user ID to session
+      session.user.id = user.id;
+      return session;
+    }
+  }
 };
 
 const handler = NextAuth(authOptions);

@@ -9,13 +9,18 @@ export default function Header() {
   return (
     <>
       <header className="p-4 border-b shadow-sm flex gap-6">
-        <h1 className="text-xl font-bold flex-shrink-0">Movie Ranker</h1>
         <nav className="flex gap-4 items-center">
+          <Link href="/" className="text-blue-600 hover:underline">
+            Home
+          </Link>
           <Link href="/auth" className="text-blue-600 hover:underline">
             Sign In
           </Link>
           <Link href="/search" className="text-blue-600 hover:underline">
-            Search
+            Search Test
+          </Link>
+          <Link href="/initialize" className="text-blue-600 hover:underline">
+            Initialize
           </Link>
         </nav>
 

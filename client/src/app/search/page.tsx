@@ -8,5 +8,11 @@ export default async function Home() {
   if (!session) {
     redirect("/");
   }
-  return <SearchClient />;
+  return (
+    <>
+      <title>Search</title>
+      <meta name="description" content="Search movies" />
+      <SearchClient />;
+    </>
+  );
 }
